@@ -42,10 +42,18 @@
         <div class="rating-circle"></div>
     </div>
 
-    <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js"></script>
 
     <script>
-        // your answer would go here
+        $(function() {
+            $('.rating-circle').hover(function() {
+                $(this).addClass('rating-hover');
+            });
+
+            $('.rating-circle').mouseout(function () {
+                $(this).removeClass('rating-hover');
+            });
+        });
     </script>
 </body>
 </html>
