@@ -47,11 +47,15 @@
     <script>
         $(function() {
             $('.rating-circle').hover(function() {
-                $(this).addClass('rating-hover');
+                var selectedCircle = $(this);
+                selectedCircle.addClass('rating-hover');
+                selectedCircle.prevAll().addClass('rating-hover');
             });
 
             $('.rating-circle').mouseout(function () {
-                $(this).removeClass('rating-hover');
+                var selectedCircle = $(this);
+                selectedCircle.removeClass('rating-hover');
+                selectedCircle.prevAll().removeClass('rating-hover');
             });
         });
     </script>
