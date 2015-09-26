@@ -46,16 +46,33 @@
 
     <script>
         $(function() {
-            $('.rating-circle').hover(function() {
-                var selectedCircle = $(this);
-                selectedCircle.addClass('rating-hover');
-                selectedCircle.prevAll().addClass('rating-hover');
+            var circles = $('.rating-circle');
+            var clickedCircle;
+
+            var paintChosenCircles = function() {
+                circles.removeClass('rating-hover rating-chosen');
+                clickedCircle.prevAll().addClass('rating-chosen');
+                clickedCircle.addClass('rating-chosen');
+            };
+
+            circles.click(function () {
+                clickedCircle = $(this);
+                paintChosenCircles();
             });
 
-            $('.rating-circle').mouseout(function () {
-                var selectedCircle = $(this);
-                selectedCircle.removeClass('rating-hover');
-                selectedCircle.prevAll().removeClass('rating-hover');
+            circles.hover(function () {
+                circles.removeClass('rating-chosen');
+
+                var hoverCircle = $(this);
+                hoverCircle.addClass('rating-hover');
+                hoverCircle.prevAll().addClass('rating-hover');
+            });
+
+            circles.mouseout(function () {
+                circles.removeClass('rating-hover');
+                if (clickedCircle) {
+                    paintChosenCircles();
+                }
             });
         });
     </script>
